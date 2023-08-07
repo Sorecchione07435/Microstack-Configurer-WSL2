@@ -84,7 +84,13 @@ the initialization will take some time, and after that if the initialization is 
 
 To get the administrator password: ```sudo snap get microstack config.credentials.keystone-password```
 
+![login](https://github.com/Sorecchione07435/Microstack-Configurer-WSL2/assets/111366201/c84dd7d5-a164-4f61-a705-d4f58bf74a3c)
+
+
 That's it, now you can have fun creating instances, floating IP images and much more
+
+![dashboard](https://github.com/Sorecchione07435/Microstack-Configurer-WSL2/assets/111366201/9ceaa8b2-3198-4e93-b2e8-d10bbb2d7aea)
+
 
 **NOTE!: This script can ONLY be run in WSL2 environments on Ubuntu, not on non WSL2 environments, if you run it the script will break immediately, as Microstack would already work on an Ubuntu distro**
 
