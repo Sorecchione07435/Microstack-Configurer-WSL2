@@ -3,9 +3,9 @@
 Microstack Configurer WSL2 is a simple SH script that automates WSL2 configuration to install Microstack inside WSL2
 
 ### Requirements:
-- Windows 10 or Windows 11
+- Windows 10 or Windows 11 (22H2)
 - WSL2
-- WSL Distro with 20.04 or 22.04
+- Clean WSL Distro with Ubuntu 20.04 or 22.04
 
 ### Script Installation
 
