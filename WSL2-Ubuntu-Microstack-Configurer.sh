@@ -23,15 +23,15 @@ fi
 echo ""
 echo "Installing Essentials Libraries ..."
 
-sudo apt update -y #2>/dev/null   #| echo "Command not returned non-zero exit status" && exit
-sudo apt install -y build-essential flex bison libssl-dev libelf-dev libncurses-dev autoconf libudev-dev libtool #2>/dev/null #| echo "Command not returned non-zero exit status" && exit
+sudo apt update -y || echo "Command returned non-zero exit status" && exit
+sudo apt install -y build-essential flex bison libssl-dev libelf-dev libncurses-dev autoconf libudev-dev libtool #2>/dev/null || echo "Command returned non-zero exit status" && exit
 
 echo ""
 echo "Cloning Kernel Source Repo ..."
 
 cd /usr/src
 
-git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth=1 wsl2 
+git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth=1 wsl2 || echo "Command returned non-zero exit status" && exit
 
 cd wsl2
 
@@ -44,19 +44,19 @@ cp "$CONFIG_PATH" /usr/src/wsl2/.config
 echo ""
 echo "Installing BC and Pahole ..."
 
-apt install -y bc dwarves
+apt install -y bc dwarves || echo "Command returned non-zero exit status" && exit
 
 
 echo ""
 echo "Building the Kernel (this may take a lot of time) ..."
 
-make
+make  || echo "Command returned non-zero exit status" && exit
 
 make modules_install 
 
-mkdir /mnt/c/Users/$WINDOWS_USERNAME/wsl2
+mkdir /mnt/c/Users/$WINDOWS_USERNAME/wsl2 || echo "Command returned non-zero exit status" && exit
 
-cp vmlinux /mnt/c/Users/$WINDOWS_USERNAME/wsl2/vmlinux
+cp vmlinux /mnt/c/Users/$WINDOWS_USERNAME/wsl2/vmlinux || echo "Command returned non-zero exit status" && exit
 
 cat >> /mnt/c/Users/$WINDOWS_USERNAME/.wslconfig << EOF
 [wsl2]
@@ -66,7 +66,7 @@ EOF
 echo ""
 echo "Installing DM Multipath Tools ..."
 
-sudo apt install multipath-tools multipath-tools-boot -y 
+sudo apt install multipath-tools multipath-tools-boot -y || echo "Command returned non-zero exit status" && exit
 
 rm -f /etc/modules-load.d/modules.conf
 
