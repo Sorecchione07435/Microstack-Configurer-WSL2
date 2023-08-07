@@ -4,7 +4,7 @@
 CONFIG_PATH=$PWD/.config
 
 #Before running the script, enter your computer username
-WINDOWS_USERNAME=Stef
+WINDOWS_USERNAME=
 #This is important!
 
 #echo  "/mnt/c/Users/$WINDOWS_USERNAME/wsl2"
@@ -60,7 +60,7 @@ cp vmlinux /mnt/c/Users/$WINDOWS_USERNAME/wsl2/vmlinux
 
 cat >> /mnt/c/Users/$WINDOWS_USERNAME/.wslconfig << EOF
 [wsl2]
-kernel = C:\\Users\\$WINDOWS_USERNAME\\wsl2\\vmlinux
+kernel = C:\\\\Users\\\\$WINDOWS_USERNAME\\\\wsl2\\\\vmlinux
 EOF
 
 echo ""
@@ -151,6 +151,8 @@ echo " **** WSL2 Distro Configured Successfully ******"
 echo ""
 echo "Your WSL2 Ubuntu distro is now ready to install Microstack"
 echo "To install microstack run: 'sudo snap install microstack --edge --devmode' and 'sudo microstack --init --control'"
+echo ""
+echo "Before installing Microstack on the distro restart the distro with 'wsl --shutdown'"
 echo ""
 echo "Script Completed!"
 exit
