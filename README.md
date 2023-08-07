@@ -1,4 +1,4 @@
-# Microstack Configurer WSL2
+# Microstack (OpenStack) Configurer WSL2
 
 Microstack Configurer WSL2 is a simple SH script that automates WSL2 configuration to install Microstack inside WSL2
 
@@ -49,26 +49,44 @@ When all operations are completed successfully this output will be written to yo
 Your WSL2 Ubuntu distro is now ready to install Microstack
 To install microstack run: 'sudo snap install microstack --edge --devmode' and 'sudo microstack --init --control'
 
+Before installing Microstack on the distro restart the distro with 'wsl --shutdown'
+
 Script Completed!
-```
-
-After receiving this success message it is necessary to edit the file ```C:\Users\username\.wslconfig```, because unfortunately the script does not add two backslashes for a
-problem
-then replace one backslash by putting two
-
-Example:
-```
-[wsl2]
-kernel = C:\\Users\\username\\wsl2\\vmlinux
 ```
 
 Finally restart your distro with ```wsl --shutdown```
 
-And if after booting by typing command ```uname -r``` and you get this output
+And if after reboot by typing command ```uname -r``` and you get this output
 
 ```
 5.15.xx.x-microsoft-custom-WSL2-ovs-multipath-xxxxxxxxxxxxx
 ```
 
-You have perfectly configured your WSL2 Distro and it is 100% ready to deploy Microstack (OpenStack)
+The custom kernel has been 100% loaded on your Ubuntu WSL2 distro.
+Now you can go to install Microstack
+
+### Microstack Installation
+
+Since we saw earlier that we have successfully compiled and run a kernel with Openvswitch and Multipath integrated, we can start with installing Microstack
+
+Install Microstack with:
+```
+sudo snap install microstack --edge --devmode
+```
+
+And now you will be able to do initialization with as well
+
+```
+sudo microstack init --auto --control
+```
+
+the initialization will take some time, and after that if the initialization is completed you can access the OpenStack Dashboard from **https://yourip/**
+
+To get the administrator password: ```sudo snap get microstack config.credentials.keystone-password```
+
+That's it, now you can have fun creating instances, floating IP images and much more
+
+**NOTE!: This script can ONLY be run in WSL2 environments on Ubuntu, not on non WSL2 environments, if you run it the script will break immediately, as Microstack would already work on an Ubuntu distro**
+
+
 
