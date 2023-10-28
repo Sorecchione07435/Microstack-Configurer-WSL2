@@ -1,6 +1,5 @@
 #!/bin/bash
-
-
+set -e
 CONFIG_PATH=$PWD/.config
 
 #Before running the script, enter your computer username
@@ -31,7 +30,7 @@ echo "Cloning Kernel Source Repo ..."
 
 cd /usr/src
 
-git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth=1 wsl2 || echo "Command returned non-zero exit status" && exit
+git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth=1 wsl2 
 
 cd wsl2
 
@@ -44,19 +43,19 @@ cp "$CONFIG_PATH" /usr/src/wsl2/.config
 echo ""
 echo "Installing BC and Pahole ..."
 
-apt install -y bc dwarves || echo "Command returned non-zero exit status" && exit
+apt install -y bc dwarves 
 
 
 echo ""
 echo "Building the Kernel (this may take a lot of time) ..."
 
-make  || echo "Command returned non-zero exit status" && exit
+make 
 
 make modules_install 
 
-mkdir /mnt/c/Users/$WINDOWS_USERNAME/wsl2 || echo "Command returned non-zero exit status" && exit
+mkdir /mnt/c/Users/$WINDOWS_USERNAME/wsl2 
 
-cp vmlinux /mnt/c/Users/$WINDOWS_USERNAME/wsl2/vmlinux || echo "Command returned non-zero exit status" && exit
+cp vmlinux /mnt/c/Users/$WINDOWS_USERNAME/wsl2/vmlinux 
 
 cat >> /mnt/c/Users/$WINDOWS_USERNAME/.wslconfig << EOF
 [wsl2]
@@ -66,7 +65,7 @@ EOF
 echo ""
 echo "Installing DM Multipath Tools ..."
 
-sudo apt install multipath-tools multipath-tools-boot -y || echo "Command returned non-zero exit status" && exit
+apt install multipath-tools multipath-tools-boot -y
 
 rm -f /etc/modules-load.d/modules.conf
 
