@@ -23,7 +23,7 @@ echo ""
 echo "Installing Essentials Libraries ..."
 
 apt update -y 
-apt install -y build-essential flex bison libssl-dev libelf-dev libncurses-dev autoconf libudev-dev libtool 2>/dev/null || echo "Command returned non-zero exit status" && exit
+apt install -y build-essential flex bison libssl-dev libelf-dev libncurses-dev autoconf libudev-dev libtool
 
 echo ""
 echo "Cloning Kernel Source Repo ..."
