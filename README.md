@@ -94,5 +94,8 @@ That's it, now you can have fun creating instances, floating IP images and much 
 
 **NOTE!: This script can ONLY be run in WSL2 environments on Ubuntu, not on non WSL2 environments, if you run it the script will break immediately, as Microstack would already work on an Ubuntu distro**
 
+## Changelogs
 
+- Added Systemd enable check, when systemd is already enabled the step is skipped, sometimes with an Ubuntu installation from automatic WSL Systemd is automatically enabled
+- Fixed the problem that the script would break at the end of each command
 
