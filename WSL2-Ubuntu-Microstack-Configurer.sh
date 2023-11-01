@@ -23,7 +23,7 @@ echo ""
 echo "Installing Essentials Libraries ..."
 
 apt update -y 
-apt install -y build-essential flex bison libssl-dev libelf-dev libncurses-dev autoconf libudev-dev libtool
+apt install -y build-essential flex bison libssl-dev libelf-dev libncurses-dev autoconf libudev-dev libtool crudini
 
 echo ""
 echo "Cloning Kernel Source Repo ..."
@@ -138,11 +138,20 @@ Also=multipathd.socket
 Alias=multipath-tools.service
 EOF
 
-echo "Enabling Systemd ..."
-cat >> /etc/wsl.conf << EOF
-[boot]
-systemd=true
-EOF
+if [ ! -f /etc/wsl.conf ]
+then
+    echo "Enabling Systemd ..."
+    crudini --set /etc/wsl.conf boot systemd true
+else
+   crudini --get --existing /etc/wsl.conf boot systemd
+	if [ $? -ne 0 ]; then
+	echo "Enabling Systemd ..."
+	crudini --set /etc/wsl.conf boot systemd true
+ 	else
+  	echo "Systemd is already enabled, skipping this step"
+	fi
+fi
+
 
 
 echo ""
