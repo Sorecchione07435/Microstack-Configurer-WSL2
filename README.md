@@ -98,4 +98,7 @@ That's it, now you can have fun creating instances, floating IP images and much 
 
 - Added Systemd enable check, when systemd is already enabled the step is skipped, sometimes with an Ubuntu installation from automatic WSL Systemd is automatically enabled
 - Fixed the problem that the script would break at the end of each command
+- 
+## Small Notice:
+Another user thought to improve my script by adding a text that says the Windows username and multi core support during kernel compilation, on this page you can find the slightly improved version:https://github.com/badanol/Microstack-Configurer-WSL2
 
