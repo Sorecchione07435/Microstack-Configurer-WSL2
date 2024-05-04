@@ -47,7 +47,7 @@ When all operations are completed successfully this output will be written to yo
 **** WSL2 Distro Configured Successfully ******
 
 Your WSL2 Ubuntu distro is now ready to install Microstack
-To install microstack run: 'sudo snap install microstack --edge --devmode' and 'sudo microstack --init --control'
+To install microstack run: 'sudo snap install microstack --edge --devmode' and 'sudo microstack init --auto --control'
 
 Before installing Microstack on the distro restart the distro with 'wsl --shutdown'
 
