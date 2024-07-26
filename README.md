@@ -98,3 +98,5 @@ That's it, now you can have fun creating instances, floating IP images and much 
 
 - Added Systemd enable check, when systemd is already enabled the step is skipped, sometimes with an Ubuntu installation from automatic WSL Systemd is automatically enabled
 - Fixed the problem that the script would break at the end of each command
+- 
+# Warning: This script is about to be deprecated, please follow this new guide to install the latest WSL2 kernel which includes both OpenvSwitch and DM Multipath: https://gist.github.com/Sorecchione07435/37071fa25d108965a8fdbe5424a2a7ec
